@@ -9,7 +9,7 @@ pub struct Vector2 {
 
 impl Vector2 {
 
-    pub fn new(x: f64, y: f64) -> Vector2 {
+    pub fn new(x: f64, y: f64) -> Self {
         Vector2 { x, y }
     }
 
