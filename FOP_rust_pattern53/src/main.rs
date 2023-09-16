@@ -1,34 +1,58 @@
 
 
 #[derive(Debug)]
-pub struct Vector2 {
-    x: f64,
-    y: f64
+pub enum UserEmail {
+    UserEmailEmpty {
+        is_email_activated: bool
+    },
+
+    UserEmailUnactivated {
+        email: String,
+        is_email_activated: bool
+    },
+
+    UserEmailActivated {
+        email: String,
+        is_email_activated: bool
+    }
 }
 
-impl Vector2 {
 
-    pub fn new(x: f64, y: f64) -> Self {//Vector2 {
-        Vector2 { x, y }
-    }
-
-    pub fn add(first_vector: Vector2, second_vector: Vector2) -> Vector2 {
-        Vector2::new(first_vector.x + second_vector.x, first_vector.y + second_vector.y)
-    }
+#[derive(Debug)]
+pub struct User {
+    pub id: String,
+    pub user_email: UserEmail
 }
-
-
-
-
 
 
 
 fn main() {
 
-    let first_vector = Vector2::new(1.0, 2.0);
-    let second_vector = Vector2::new(3.0, 4.0);
-    let summed_vector = Vector2::add(first_vector, second_vector);
+    let user_with_empty_email = User {
+        id: String::from("1"),
+        user_email: UserEmail::UserEmailEmpty  {
+            is_email_activated: false,
+        },
+    };
 
-    println!("{:?}", summed_vector);
+    let user_with_unactivated_email = User {
+        id: String::from("2"),
+        user_email: UserEmail::UserEmailUnactivated {
+            email: String::from("unactivated_emal@example.com"),
+            is_email_activated: false,
+        },
+    };
 
+    let user_with_activated_email = User {
+        id: String::from("3"),
+        user_email: UserEmail::UserEmailActivated {
+            email: String::from("activated_emal@example.com"),
+            is_email_activated: true,
+        },
+    };
+    
+    println!("{:?}", user_with_empty_email);
+    println!("{:?}", user_with_unactivated_email);
+    println!("{:?}", user_with_activated_email);
+    
 }
