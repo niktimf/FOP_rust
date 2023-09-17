@@ -53,6 +53,8 @@ pub fn of_string(val: String) -> EmailCategory {
 
 }
 
+
+
 fn main() {
     let email= "HelloWorld_@mail.com".to_string();
     let admin_email = "HelloWorld_%mail.com".to_string();
@@ -65,59 +67,40 @@ fn main() {
     let check_invalid_email = of_string(invalid_email);
 
 
+    match check_email {
+        EmailCategory::Email(email) => println!("Email: {}", email.0),
+        _ => println!("{:?}", check_email),
+    }
+
+    match check_admin_email {
+        EmailCategory::AdminEmail(admin_email) => println!("AdminEmail: {}", admin_email.0),
+        _ => println!("{:?}", check_admin_email),
+    }
+
+    match check_user_email {
+        EmailCategory::UserEmail(user_email) => println!("UserEmail: {}", user_email.0),
+        _ => println!("{:?}", check_user_email),
+    }
+
+    println!("Invalid email: {:?}", check_invalid_email);
+
+
+
     /*
-    match (check_email, check_admin_email, check_user_email, check_invalid_email) {
-        email_category=> match email_category {
-            EmailCategory::Email(email) => {
-                println!("{}", email.0);
-            }
-            EmailCategory::AdminEmail(admin_email) => {
-                println!("{}", admin_email.0);
-            }
-            EmailCategory::UserEmail(user_email) => {
-                println!("{}", user_email.0);
-            }
-            EmailCategory::NotEmail => {
-                println!("Not an email");
-            }
-        }
+    match check_invalid_email {
+        EmailCategory::NotEmail => println!("NotEmail"),
+        _ => println!("{:?}", check_invalid_email),
     }
 
      */
 
 
-
+    /*
     println!("{:?}", check_email);
     println!("{:?}", check_admin_email);
     println!("{:?}", check_user_email);
     println!("{:?}", check_invalid_email);
 
-
-    /*
-    let valid_email= "HelloWorld@mail.com".to_string();
-    let invalid_email = "HelloWorldmail.com".to_string();
-
-    let check_valid_email = of_string(valid_email);
-    let check_invalid_email = of_string(invalid_email);
-
-    
-    match check_valid_email {
-        Ok(email) => {
-            println!("{}", email.0);
-        }
-        Err(err) => {
-            println!("{}", err);
-        }
-    }
-
-    match check_invalid_email {
-        Ok(email) => {
-            println!("{}", email.0);
-        }
-        Err(err) => {
-            println!("{}", err);
-        }
-    }
      */
 
 }
