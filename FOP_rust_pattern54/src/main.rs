@@ -1,5 +1,5 @@
 
-
+use std::cmp::Ordering::{Equal, Greater, Less};
 
 /// Несмотря на то, что Rust является систеным языком,
 /// он предоставляет ряд инструментов для написания декларативного кода.
@@ -26,9 +26,9 @@ fn is_number_in_range_imperative(number: u32, start: u32, end: u32) {
 /// Напишем функцию в декларативном стиле
 
 fn is_number_in_range_declarative(number: u32, start: u32, end: u32) {
-    match start > end {
-        true => return println!("Неверный диапазон"),
-        false => {
+    match start.cmp(&end) {
+        Greater => return println!("Неверный диапазон"),
+        Equal | Less => {
             match (start..end).contains(&number) {
                 true => println!("Число {} принадлежит диапазону {} - {}", number, start, end),
                 false => println!("Число {} не принадлежит диапазону {} - {}", number, start, end)
@@ -40,9 +40,12 @@ fn is_number_in_range_declarative(number: u32, start: u32, end: u32) {
 
 
 fn main() {
+
     is_number_in_range_imperative(5, 1, 10);
     is_number_in_range_declarative(5, 1, 10);
+
 }
+
 
 
 
