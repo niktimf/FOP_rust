@@ -12,8 +12,6 @@ pub fn some_fn(val: Email) {
 
 
 /// 2 блок
-/// Макрос, который автоматически реализует trait Debug для нашего типа, чтобы мы смогли вывести
-/// значение с помощью println!
 #[derive(Debug)]
 pub struct ManagerEmail(String);
 
@@ -38,19 +36,6 @@ pub fn of_string(val: String) -> Email {
         (false, false, true) => Email::UserEmail(UserEmail(val)),
         _ => Email::NotEmail
     }
-
-    /*
-    if val.contains("@") {
-        Email::Email(Email(val))
-    } else if val.contains("%") {
-        Email::AdminEmail(AdminEmail(val))
-    } else if val.contains("*") {
-        Email::UserEmail(UserEmail(val))
-    } else {
-        Email::NotEmail
-    }
-     */
-
 }
 
 
